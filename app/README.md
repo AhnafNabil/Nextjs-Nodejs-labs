@@ -1,4 +1,3 @@
-Here's a comprehensive step-by-step guide to set up a simple Next.js app that connects to a Node.js server.
 
 ### Step 1: Client Setup
 
