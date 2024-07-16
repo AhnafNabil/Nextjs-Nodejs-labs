@@ -12,7 +12,6 @@ if (!publicKey) {
 
 // Create the EC2 KeyPair using the public key
 const keyPair = new aws.ec2.KeyPair("my-key-pair", {
-    keyName: "my-key-pair",
     publicKey: publicKey,
 });
 
@@ -106,6 +105,9 @@ const ec2Instance = new aws.ec2.Instance("my-ec2-instance", {
     ami: "ami-060e277c0d4cce553", // change the value accordingly
     subnetId: publicSubnet.id,
     keyName: keyPair.keyName, // Reference the created key pair
+    tags: {
+        Name: "Nextjs-Nodejs",
+    },
 });
 
 exports.publicIp = ec2Instance.publicIp;
