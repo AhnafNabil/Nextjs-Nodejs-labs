@@ -4,10 +4,12 @@ const pulumi = require("@pulumi/pulumi");
 const aws = require("@pulumi/aws");
 
 // Read the public key from the local file system
-const publicKey = fs.readFileSync(`${process.env.HOME}/.ssh/id_rsa.pub`, "utf-8");
+const publicKeyPath = path.expanduser("~/.ssh/id_rsa_pulumi.pub");
+const publicKey = fs.readFileSync(publicKeyPath, "utf-8");
 
 // Create a Key Pair in AWS using the public key
 const keyPair = new aws.ec2.KeyPair("my-key-pair", {
+    keyName: "my-key-pair",
     publicKey: publicKey,
 });
 
