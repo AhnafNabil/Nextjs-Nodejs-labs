@@ -1,15 +1,16 @@
 "use strict";
 const pulumi = require("@pulumi/pulumi");
 const aws = require("@pulumi/aws");
-const fs = require("fs");
-const os = require("os");
 const path = require("path");
 
 // Read the public key from the local file
-const publicKeyPath = path.join(os.homedir(), ".ssh", "id_rsa.pub");
-const publicKey = fs.readFileSync(publicKeyPath, "utf-8");
+const publicKey = process.env.PUBLIC_KEY;
 
-// Create a Key Pair in AWS using the public key
+if (!publicKey) {
+    throw new Error("PUBLIC_KEY environment variable is not set");
+}
+
+// Create the EC2 KeyPair using the public key
 const keyPair = new aws.ec2.KeyPair("my-key-pair", {
     keyName: "my-key-pair",
     publicKey: publicKey,
