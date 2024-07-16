@@ -29,7 +29,6 @@ In this lab, we will create and configure aws infrastructure using pulumi js. He
     const aws = require("@pulumi/aws");
     const path = require("path");
 
-    // Read the public key from the local file
     const publicKey = process.env.PUBLIC_KEY;
 
     if (!publicKey) {
@@ -229,7 +228,7 @@ git push origin main
 ```
 This setup will create a VPC, a public subnet with the necessary route tables and gateways, and a EC2 instance within that subnet using `Pulumi.js` and GitHub Actions for CI/CD.
 
-If we got to github `repository > Actions` we can see the workflow that we created running. We can also see the details by clicking it:
+If we go to github `repository > Actions`, we can see the workflow that we have created is running. We can also see the details by clicking it:
 
 ![alt text](./images/image-3.png)
 
