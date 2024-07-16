@@ -1,18 +1,16 @@
 ---
 name: Deploy Next.js and Node.js applications to EC2
 
-# on:
-#   push:
-#     branches:
-#       - main
-#     paths:
-#       - app/**
-
 on:
-  workflow_run:
-    workflows: ["Deploy Infrastructure"]
-    types:
-      - completed
+  push:
+    branches:
+      - main
+
+# on:
+#   workflow_run:
+#     workflows: ["Deploy Infrastructure"]
+#     types:
+#       - completed
 
 jobs:
   deploy:
@@ -28,7 +26,5 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Copy app directory to EC2
-        env:
-          EC2_PUBLIC_IP: ${{ secrets.EC2_PUBLIC_IP }}
         run: |
-          scp -r app ubuntu@${{ env.EC2_PUBLIC_IP }}:~/app
+          scp -r app ubuntu@$13.250.50.133:~/app
