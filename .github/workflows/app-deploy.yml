@@ -44,7 +44,11 @@ jobs:
           sudo apt install -y nodejs npm
 
           # Install PM2 for process management
-          sudo npm install -g pm2
+          if ! command -v pm2 &> /dev/null; then
+            sudo npm install -g pm2
+          fi
+
+          echo "NEXT_PUBLIC_API_URL=http://13.250.50.133:5000" > ~/app/client/.env.local
 
           # Start Node.js backend
           cd ~/app/server
@@ -57,3 +61,4 @@ jobs:
           npm install
           npm run build
           pm2 start npm --name "nextjs-app" -- start
+          EOF
