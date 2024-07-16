@@ -1,10 +1,12 @@
 "use strict";
-const fs = require("fs");
 const pulumi = require("@pulumi/pulumi");
 const aws = require("@pulumi/aws");
+const fs = require("fs");
+const os = require("os");
+const path = require("path");
 
-// Read the public key from the local file system
-const publicKeyPath = path.expanduser("~/.ssh/id_rsa_pulumi.pub");
+// Read the public key from the local file
+const publicKeyPath = path.join(os.homedir(), ".ssh", "id_rsa.pub");
 const publicKey = fs.readFileSync(publicKeyPath, "utf-8");
 
 // Create a Key Pair in AWS using the public key
