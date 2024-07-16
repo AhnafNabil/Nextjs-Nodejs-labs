@@ -110,6 +110,4 @@ const ec2Instance = new aws.ec2.Instance("my-ec2-instance", {
     },
 });
 
-// exports.publicIp = ec2Instance.publicIp;
-
-pulumi.export('next_app_ip', ec2Instance.publicIp);
+exports.next_app_ip = ec2Instance.publicIp;
