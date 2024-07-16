@@ -1,5 +1,13 @@
 
-### Step 1: Client Setup
+
+### Install `node` and `npm`
+
+```sh
+sudo apt update
+sudo apt install nodejs npm
+```
+
+### Client Setup
 
 #### 1. Set Up Next.js App
 
@@ -69,7 +77,7 @@ export default function FetchData() {
   const [data, setData] = useState<string | null>(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/data')
+    axios.get('http://<ec2-instance-IP>:5000/data')
       .then(response => {
         setData(response.data.message); // Assuming the response has a message property
       })
@@ -94,6 +102,8 @@ export default function FetchData() {
 }
 ```
 
+*Note : Change the `<ec2-instance-IP` with your ec2 instance public-IP*
+
 #### 4. Run the Next.js App
 
 Start the Next.js development server:
@@ -102,7 +112,7 @@ npm run dev
 ```
 Your Next.js app should be running at `http://localhost:3000`.
 
-### Step 2: Server Setup
+### Server Setup
 
 #### 1. Initialize Node.js Server
 
