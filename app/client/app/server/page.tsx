@@ -4,11 +4,14 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+// const serverUrl = process.env.REACT_APP_SERVER_URL 
+
 export default function FetchData() {
   const [data, setData] = useState<string | null>(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/data')
+    // axios.get(`${serverUrl}`)
+    axios.get('http://<ec2-instance-public-IP>:5000/data')
       .then(response => {
         setData(response.data.message); // Assuming the response has a message property
       })
