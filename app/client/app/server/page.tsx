@@ -1,4 +1,4 @@
-// simple-next-app/app/fetch/page.tsx
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -21,7 +21,7 @@ export default function FetchData() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
       <h1 className="text-4xl font-bold text-blue-500 mb-4">Data from Node.js Server</h1>
       {data ? (
-        <p className="bg-white p-4 rounded-lg shadow-md text-left">{data}</p>
+        <p className="bg-white dark:bg-gray-800 dark:text-white p-4 rounded-lg shadow-md text-left">{data}</p>
       ) : (
         <p className="text-gray-500">Loading...</p>
       )}
