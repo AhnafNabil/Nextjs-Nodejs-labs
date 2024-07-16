@@ -8,7 +8,7 @@ export default function FetchData() {
   const [data, setData] = useState<string | null>(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/data')
+    axios.get('http://<ec-instance-public-IP>:5000/data')
       .then(response => {
         setData(response.data.message); // Assuming the response has a message property
       })
