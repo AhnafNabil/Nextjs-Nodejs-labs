@@ -104,9 +104,9 @@ const ec2Instance = new aws.ec2.Instance("my-ec2-instance", {
     vpcSecurityGroupIds: [securityGroup.id],
     ami: "ami-060e277c0d4cce553", // change the value accordingly
     subnetId: publicSubnet.id,
-    keyName: keyPair.keyName, // Reference the created key pair
+    keyName: keyPair.keyName, // Reference the created key-pair
     tags: {
-        Name: "Nextjs-Nodejs",
+        Name: "Nextjs app",
     },
 });
 
