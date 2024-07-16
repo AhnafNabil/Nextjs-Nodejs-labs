@@ -6,6 +6,10 @@ const port = 5000;
 
 app.use(cors());
 
+app.get('/', (req, res) => {
+  res.json({ message: 'Server is Running ....' });
+});
+
 app.get('/data', (req, res) => {
   res.json({ message: 'Hello from the Node.js server!' });
 });
