@@ -35,3 +35,25 @@ jobs:
       - name: Copy app directory to EC2
         run: |
           scp -o StrictHostKeyChecking=no -r app ubuntu@13.250.50.133:~/app
+      
+      - name: Deploy to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ubuntu@13.250.50.133 << 'EOF'
+          # Update and install dependencies
+          sudo apt update && sudo apt upgrade -y
+          sudo apt install -y nodejs npm
+
+          # Install PM2 for process management
+          sudo npm install -g pm2
+
+          # Start Node.js backend
+          cd ~/app/server
+          npm install
+          pm2 start index.js --name "nodejs-server"
+
+
+          # Start Next.js app
+          cd ~/app/client
+          npm install
+          npm run build
+          pm2 start npm --name "nextjs-app" -- start
