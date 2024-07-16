@@ -204,10 +204,10 @@ You now have a Next.js client application running on `http://<ec2-instance-publi
 
 1. Open `http://<ec2-instance-public-IP>:3000` in your browser to see the "Hello World" message.
 
-    ![Hello World](./images/1.png)
+    ![Hello World](https://github.com/Galadon123/Nextjs-Nodejs-labs/blob/main/DOCS/lab%2002/images/1.png)
 
 2. Open `http://<ec2-instance-public-IP>:3000/server` in your browser to see the response from the Node.js server running on port `5000`.
 
-    ![Node.js Response](./images/2.png)
+    ![Node.js Response](https://github.com/Galadon123/Nextjs-Nodejs-labs/blob/main/DOCS/lab%2002/images/2.png)
 
 *Note: Replace `<ec2-instance-public-IP>` with your EC2 instance's public IP address.*
