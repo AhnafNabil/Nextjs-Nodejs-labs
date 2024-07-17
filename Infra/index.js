@@ -44,7 +44,7 @@ const publicSubnet = new aws.ec2.Subnet("public-subnet", {
     },
 });
 
-// Create a Route Table
+// Create a Public Route table
 const routeTable = new aws.ec2.RouteTable("public-rt", {
     vpcId: vpc.id,
     routes: [
@@ -110,5 +110,4 @@ const ec2Instance = new aws.ec2.Instance("my-ec2-instance", {
     },
 });
 
-exports.publicIp = ec2Instance.publicIp;
-
+exports.next_app_ip = ec2Instance.publicIp;
