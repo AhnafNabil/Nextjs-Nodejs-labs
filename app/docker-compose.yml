@@ -1,20 +1,17 @@
-# docker-compose.yml
-
-version: '3.8'
-
+version: '3'
 services:
-  client:
+  nextjs-app:
     build:
       context: ./client
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    environment:
-      - REACT_APP_SERVER_URL=http://localhost:5000/data
-    depends_on:
-      - server
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
-  server:
+  nodejs-server:
     build:
       context: ./server
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
